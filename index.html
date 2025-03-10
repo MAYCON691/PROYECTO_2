@@ -4,137 +4,152 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link
-      rel="stylesheet"
-      href="https://ux.ed.team/css/styles.css?201803301710"
-    />
+    <link rel="stylesheet" href="https://ux.ed.team/css/styles.css?201803301710" />
     <title>EDcursos</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #seleccion-usuario {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .volver-inicio {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #1c6dd6;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .volver-inicio:hover {
+            background-color: #1d49a7;
+        }
+    </style>
   </head>
   <body>
-    <div class="ed-grid"> <!--para el titulo -->
-        <h1>ED CLASES</h1>
-    <!--CREAMOS EL FORMULARIO-->
-        <h2>CURSO</h2>
-        <form id="formCursos">
-            <div class="ed-grid m-grid-4">
-                <div class="form-item">
-                    <label>
-                        Nombre del curso:
-                        <input type="text" name="nombreCurso" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                       Poster:
-                       <input type="text" name="posterCurso" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Clases:
-                        <input type="number" min="1" name="clasesCurso" required>
-                    </label>     
-                </div>
-                <div class="form-item m-py-3">
-                    <input class="button" type="submit" value="crear curso">
-                </div>
-
-            </div>
-        </form>
-        <!--CREAMOS FORMULARIO PROFESOR-->
-        <h2>PROFESOR</h2>
-        <form id="formProfesor">
-            <div class="ed-grid m-grid-6">
-                <div class="form-item">
-                    <label>
-                        Nombre del profesor:
-                        <input type="text" name="nombreProfesor" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Apellidos del profesor:
-                        <input type="text" name="apellidoProfesor" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Email del profesor:
-                        <input type="email" name="correoProfesor" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Estado de profesor: <!--estado activo o no-->
-                        <select name="activoProfesor">
-                            <option value="activo">activo</option>
-                            <option value="inactivo">inactivo</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="form-item">
-                    <label>
-                        CURSOS DICTADOS:
-                        <input type="text" name="cursosdicProfesor" required>
-                    </label>
-                </div>
-                <div class="form-item">
-                    <label>
-                        Calificacion:
-                        <input type="number" min="0" max="100" name="calificacionProfesor" required>
-                    </label>
-                </div>    
-                <div class="form-item m-py-3">
-                    <input class="button" type="submit" value="crear profesor">
-                </div>
-            </div>
-        </form>
+    <div id="seleccion-usuario">
+        <h2>¿Quién eres?</h2>
+        <button onclick="mostrarFormulario('estudiante')">Estudiante</button>
+        <button onclick="mostrarFormulario('profesor')">Profesor</button>
+        <button onclick="mostrarFormulario('curso')">Crear Curso</button>
+    </div>
+    
+    <div id="formularios" style="display: none;">
+        <button class="volver-inicio" onclick="volverInicio()">Volver al Inicio</button>
         
-        <!--CREAMOS FORMULARIO ESTUDIANTE-->
-        <h2>ESTUDIANTE</h2>
-        <form id="formAlumno">
-            <div class="ed-grid m-grid-4">
-                <div class="form-item">
-                    <label>
-                        Nombre del Alumno:
-                        <input type="text" name="nombreAlumno" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Apellidos del Alumno:
-                        <input type="text" name="apellidoAlumno" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Email del Alumno:
-                        <input type="email" name="correoAlumno" required>
-                    </label>     
-                </div>
-                <div class="form-item">
-                    <label>
-                        Estado de Alumno: <!--estado activo o no-->
-                        <select name="activoAlumno">
-                            <option value="activo">activo</option>
-                            <option value="inactivo">inactivo</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="form-item">
-                    <label>
-                        CURSOS TOMADOS:
-                        <input type="text" name="cursosTomados" required>
-                    </label>
-                </div>
-                <div class="form-item m-py-3">
-                    <input class="button" type="submit" value="crear Alumno">
-                </div>
-            </div>
-        </form>
+        <div id="formulario-curso" style="display: none;">
+            <h2>CURSO</h2>
+            <form id="formCursos">
+                <label>Nombre del curso:
+                    <input type="text" name="nombreCurso" required>
+                </label>     
+                <label>Poster:
+                    <input type="text" name="posterCurso" required>
+                </label>     
+                <label>Clases:
+                    <input type="number" min="1" name="clasesCurso" required>
+                </label>     
+                <input class="button" type="submit" value="Crear Curso">
+            </form>
+        </div>
+        
+        <div id="formulario-profesor" style="display: none;">
+            <h2>PROFESOR</h2>
+            <form id="formProfesor">
+                <label>Nombre del profesor:
+                    <input type="text" name="nombreProfesor" required>
+                </label>     
+                <label>Apellidos del profesor:
+                    <input type="text" name="apellidoProfesor" required>
+                </label>     
+                <label>Email del profesor:
+                    <input type="email" name="correoProfesor" required>
+                </label>     
+                <label>Estado de profesor:
+                    <select name="activoProfesor">
+                        <option value="activo">activo</option>
+                        <option value="inactivo">inactivo</option>
+                    </select>
+                </label>
+                <label>Cursos Dictados:
+                    <input type="text" name="cursosdicProfesor" required>
+                </label>
+                <label>Calificación:
+                    <input type="number" min="0" max="100" name="calificacionProfesor" required>
+                </label>
+                <input class="button" type="submit" value="Crear Profesor">
+            </form>
+        </div>
+        
+        <div id="formulario-estudiante" style="display: none;">
+            <h2>ESTUDIANTE</h2>
+            <form id="formAlumno">
+                <label>Nombre del Alumno:
+                    <input type="text" name="nombreAlumno" required>
+                </label>     
+                <label>Apellidos del Alumno:
+                    <input type="text" name="apellidoAlumno" required>
+                </label>     
+                <label>Email del Alumno:
+                    <input type="email" name="correoAlumno" required>
+                </label>     
+                <label>Estado de Alumno:
+                    <select name="activoAlumno">
+                        <option value="activo">activo</option>
+                        <option value="inactivo">inactivo</option>
+                    </select>
+                </label>
+                <label>Cursos Tomados:
+                    <input type="text" name="cursosTomados" required>
+                </label>
+                <input class="button" type="submit" value="Crear Alumno">
+            </form>
+        </div>
     </div>
-    <div class="ed-grid m-grid-4 s-grid-2 row-gap" id = "cursos"> <!--///m-desde pantallas medianas, grid-quiero que sea una grilla- de 4 columnas... s-small...row-gap-permite que las tarjetas no esten unidas-->     
-    </div>
+    
     <script type="module" src="./scripts/index.js"></script>
-</body>
+    <script>
+        function mostrarFormulario(tipo) {
+            document.getElementById("seleccion-usuario").style.display = "none";
+            document.getElementById("formularios").style.display = "block";
+            
+            document.getElementById("formulario-curso").style.display = "none";
+            document.getElementById("formulario-profesor").style.display = "none";
+            document.getElementById("formulario-estudiante").style.display = "none";
+            
+            if (tipo === "curso") document.getElementById("formulario-curso").style.display = "block";
+            else if (tipo === "profesor") document.getElementById("formulario-profesor").style.display = "block";
+            else if (tipo === "estudiante") document.getElementById("formulario-estudiante").style.display = "block";
+        }
+        
+        function volverInicio() {
+            document.getElementById("formularios").style.display = "none";
+            document.getElementById("seleccion-usuario").style.display = "block";
+        }
+    </script>
+  </body>
 </html>
